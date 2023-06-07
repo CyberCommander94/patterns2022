@@ -13,5 +13,46 @@
       <a href="index.html">← Go to patterns page</a>
     </li>
   </ul>
+  <div class="buttons-wrapper">
+    <button id="showCustomerStatus">Show customer status</button>
+  </div>
+  <script>
+    class CustomerPrototype {
+      constructor (proto) {
+        this.proto = proto;
+      }
+
+      clone() {
+        let customer = new Customer();
+
+        customer.first = this.proto.first;
+        customer.last = this.proto.last;
+        customer.status = this.proto.status;
+
+        return customer;
+      };
+    }
+
+    class Customer {
+      constructor (first, last, status) {
+        this.first = first;
+        this.last = last;
+        this.status = status;
+      }
+
+      say() {
+        alert("name: " + this.first + " " + this.last + ", status: " + this.status);
+      };
+    }
+
+    function run() {
+      var proto = new Customer("Dorian", "Gray", "pending");
+      var prototype = new CustomerPrototype(proto);
+      var customer = prototype.clone();
+      customer.say();
+    }
+
+    document.querySelector('#showCustomerStatus').addEventListener('click', run);
+  </script>
 </body>
 </html>
