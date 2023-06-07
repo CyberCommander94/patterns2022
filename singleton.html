@@ -15,8 +15,8 @@
     </li>
   </ul>
   <div class="buttons-wrapper">
-    <button id="compareSingletons" @click="compareSingletonInstances">Compare singleton instances</button>
-    <button id="compareSingletonWithObject" @click="compareSingletonInstanceWithDifferentObject">Compare singleton instance with different object</button>
+    <button id="compareSingletons">Compare singleton instances</button>
+    <button id="compareSingletonWithObject">Compare singleton instance with different object</button>
   </div>
   <script>
     class Singleton {
@@ -26,7 +26,7 @@
 
       static getInstance () {
         if (!constructor.instance) {
-          constructor.instance = new Object();;
+          constructor.instance = new Object();
         }
         return constructor.instance;
       }
