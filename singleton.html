@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/singleton/singleton.css">
   <title>Singleton</title>
 </head>
 <body>
@@ -13,5 +14,38 @@
       <a href="index.html">← Go to patterns page</a>
     </li>
   </ul>
+  <div class="buttons-wrapper">
+    <button id="compareSingletons" @click="compareSingletonInstances">Compare singleton instances</button>
+    <button id="compareSingletonWithObject" @click="compareSingletonInstanceWithDifferentObject">Compare singleton instance with different object</button>
+  </div>
+  <script>
+    class Singleton {
+      instance;
+
+      constructor() {};
+
+      static getInstance () {
+        if (!constructor.instance) {
+          constructor.instance = new Object();;
+        }
+        return constructor.instance;
+      }
+    }
+
+    function compareSingletonInstances() {
+      var instance1 = Singleton.getInstance();
+      var instance2 = Singleton.getInstance();
+      alert(instance1 === instance2)
+    };
+
+    function compareSingletonInstanceWithDifferentObject() {
+      var instance1 = Singleton.getInstance();
+      var instance2 = new Object;
+      alert(instance1 === instance2)
+    };
+
+    document.querySelector('#compareSingletons').addEventListener('click', compareSingletonInstances);
+    document.querySelector('#compareSingletonWithObject').addEventListener('click', compareSingletonInstanceWithDifferentObject);
+  </script>
 </body>
 </html>
